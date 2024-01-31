@@ -1,0 +1,102 @@
+<h1>Facturas</h1>
+
+<form>
+    <table>
+        <tr>
+            <td>Codigo</td>
+            <td><input type="number" name="txtCodigo" [(ngModel)]="fac.codigo"></td>
+        </tr>
+        <tr>
+            <td>Numero</td>
+            <td><input type="text" name="txtNumero" [(ngModel)]="fac.numero"></td>
+        </tr>
+        <tr>
+            <td>Fecha de Emisión</td>
+            <td><input type="text" name="txtFechaEmision" [(ngModel)]="fac.fechaEmision"></td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td><input type="number" name="txtMonto" [(ngModel)]="fac.total"></td>
+        </tr>
+        <tr>
+            <td>Codigo Cliente</td>
+            <td><input type="number" name="txtCodigoCliente" [(ngModel)]="fac.cliente.codigo"></td>
+        </tr>
+        <tr>
+            <td>DNI Cliente</td>
+            <td><input type="text" name="txtDNI" [(ngModel)]="fac.cliente.dni"></td>
+        </tr>
+        <tr>
+            <td>Nombre Cliente</td>
+            <td><input type="text" name="txtNombreCliente" [(ngModel)]="fac.cliente.nombre"></td>
+        </tr>
+        <tr>
+            <td>Direccion Cliente</td>
+            <td><input type="text" name="txtDireccionCliente" [(ngModel)]="fac.cliente.direccion"></td>
+        </tr>
+        <ng-container *ngFor="let detalle of fac.detalles; let i = index">
+            <tr>
+                <td>Código Detalle</td>
+                <td><input type="number" name="txtCodigoDetalle{{i}}" [(ngModel)]="detalle.codigo"></td>
+            </tr>
+            <tr>
+                <td>Producto</td>
+                <td><input type="text" name="txtProducto{{i}}" [(ngModel)]="detalle.producto"></td>
+            </tr>
+            <tr>
+                <td>Cantidad</td>
+                <td><input type="number" name="txtCantidad{{i}}" [(ngModel)]="detalle.cantidad"></td>
+            </tr>
+            <tr>
+                <td>Precio</td>
+                <td><input type="number" name="txtPrecio{{i}}" [(ngModel)]="detalle.precio"></td>
+            </tr>
+        </ng-container>
+        <tr>
+            <td colspan="2">
+                <button type="button" (click)="agregarDetalle()">Agregar Detalle</button>
+            </td>
+        </tr>
+    </table>
+    <button (click)="guardar()">Guardar</button>
+</form>
+
+<hr/>
+
+<table>
+    <tr>
+        <th>Código</th>
+        <th>Numero</th>
+        <th>Fecha de emisión</th>
+        <th>Total</th>
+        <th>DNI Cliente</th>
+        <th>Nombre Cliente</th>
+        <th>Direccion</th>
+        <th>Detalles</th>
+    </tr>
+    <tr *ngFor="let fac of facturas | async">
+        <td>{{ fac.codigo }}</td>
+        <td>{{ fac.numero }}</td>
+        <td>{{ fac.fechaEmision }}</td>
+        <td>{{ fac.total }}</td>
+        <td>{{ fac.cliente.dni }}</td>
+        <td>{{ fac.cliente.nombre }}</td>
+        <td>{{ fac.cliente.direccion}}</td>
+        <td>
+            <table>
+                <tr>
+                    <th>Código Detalle</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+                <tr *ngFor="let detalle of fac.detalles">
+                    <td>{{ detalle.codigo }}</td>
+                    <td>{{ detalle.producto }}</td>
+                    <td>{{ detalle.cantidad }}</td>
+                    <td>{{ detalle.precio }}</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
