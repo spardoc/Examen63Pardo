@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environments';
 import {HttpClientModule} from '@angular/common/http'; // CONSULTAS SQL
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { FacturasComponent } from './pages/facturas/facturas.component';
+import { FormularioComponent } from './pages/formulario/formulario.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FacturasComponent } from './pages/facturas/facturas.component';
     AcercadeComponent,
     MenuComponent,
     ClientesComponent,
-    FacturasComponent
+    FacturasComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,

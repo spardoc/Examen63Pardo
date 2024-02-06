@@ -9,5 +9,6 @@ export class MenuComponent {
   paginas = [
     {titulo: 'Clientes', path: 'paginas/clientes'},
     {titulo: 'Facturas', path: 'paginas/facturas'},
+    {titulo: 'Formulario', path: 'paginas/formulario'},
   ]
 }

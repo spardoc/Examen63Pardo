@@ -1,0 +1,19 @@
+<h1>Formulario</h1>
+
+<form>
+    <table>
+        <tr>
+            <td>Número de teléfono</td>
+            <td><input type="number" name="numeroTelefono" [(ngModel)]="rec.numeroTelefono"></td>
+        </tr>
+        <tr>
+            <td>Operadora</td>
+            <td><input type="text" name="txtOperadora" [(ngModel)]="rec.operadora"></td>
+        </tr>
+        <tr>
+            <td>Monto</td>
+            <td><input type="text" name="txtMonto" [(ngModel)]="rec.monto"></td>
+        </tr>
+    </table>
+    <button (click)="realizarRecarga()">Guardar</button>
+</form>
